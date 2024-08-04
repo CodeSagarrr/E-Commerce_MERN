@@ -15,7 +15,7 @@ const ProductCard = ({ addToCart }) => {
                 setProductData(res.data)
             })
             .catch(err => console.log(err))
-    })
+    },[productData])
 
    
 

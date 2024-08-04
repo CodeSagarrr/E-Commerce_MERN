@@ -18,7 +18,7 @@ function Login() {
       const userRes = await axios.post('/user/login',userLogin)
       toast.success(userRes.data.msg)
       setUserLogin({username:'',password:'',})
-     redirect('/products')
+      redirect('/products')
 
       
     } catch (error) {

@@ -9,6 +9,7 @@ import SignUp from './Pages/SignUp'
 import { useEffect, useState } from 'react'
 import Login from './Pages/Login'
 import CartProduct from './Pages/CartProduct'
+import ProductDetails from './Pages/ProductDetails'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -17,7 +18,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [serverData, setServerData] = useState([])
-  const [user , setUser] = useState("")
 
 
   useEffect(() => {
@@ -29,9 +29,22 @@ function App() {
   })
 
   const [productCart, setProductCart] = useState([]);
+  const [products , setProducts] = useState([]);
+
+  useEffect(()=>{
+    const saveProduct = localStorage.getItem('products')
+    if(saveProduct){
+      setProducts(JSON.parse(saveProduct))
+    }
+  },[])
+  useEffect(()=>{
+    localStorage.setItem('products',JSON.stringify(products))
+  },[products])
 
   const addToCart = (productItem) => {
-    
+      setProducts([...products, productItem])
+      setProductCart([...productCart, {...productItem , quantity:1}]);
+      toast.success('product added')
   }
 
 
@@ -46,6 +59,7 @@ function App() {
             <Route path='/' element={<><Home addToCart={addToCart} /></>} />
             <Route path='/about' element={<><About /></>} />
             <Route path='/products' element={<><Products addToCart={addToCart} /></>} />
+            <Route path='/products/:id' element={<><ProductDetails addToCart={addToCart} /></>} />
             <Route path='/signup' element={<><SignUp /></>} />
             <Route path='/login' element={<><Login /></>} />
             <Route path='/cart' element={<><CartProduct productCart={productCart} /></>} />

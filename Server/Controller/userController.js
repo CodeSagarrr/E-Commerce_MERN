@@ -31,7 +31,20 @@ async function handleLogin(req, res) {
   res.send({msg:'user are login'})
 }
 
+
+function handleLogOut(req,res){
+    const loggedInUser = req.cookies.jwtToken;
+
+    if(loggedInUser){
+        res.clearCookie('jwtToken').send({msg:'Thanks to logout'});
+    }
+   
+}
+
+
+
 module.exports = {
     handleData,
-    handleLogin
+    handleLogin,
+    handleLogOut
 }

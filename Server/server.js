@@ -22,10 +22,10 @@ app.use(cookieParser())
 
 app.use('/user/signup',validate(validateUser), router)
 app.use('/user/',router)
+app.use('/user/logout',router)
 
 app.use('/user',checkUSerToken,(req,res)=>{
    res.send({user:req.user})
-   res.redirect('/')
 })
 
 

@@ -1,14 +1,27 @@
+import axios from 'axios';
 import React, { useState } from 'react'
 import { FaShoppingCart } from "react-icons/fa";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
-const Navbar = ({productCart}) => {
+const Navbar = ({ productCart }) => {
+  const redirect = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
- 
 
-  
+  const handleLogOut = async () => {
+    try {
+      const response = await axios.get('/user/logout')
+      toast.success(response.data.msg)
+      redirect('/login')
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        alert('error occured');
+      }
+    }
+  }
+
   return (
     <>
       <div className='flex justify-between px-4 py-5 border  ' >
@@ -21,11 +34,11 @@ const Navbar = ({productCart}) => {
             <li className='px-6'><Link to="/">Home</Link></li>
             <li className='px-6'><Link to="/about">About us</Link></li>
             <li className='px-6'><Link to='/products'>Products</Link></li>
-            <li className='px-6'><Link to="/signup"><span className='text-yellow-400'>Sign up</span></Link></li>
-            <li className='px-4'><a href="/"><span className='text-yellow-400'>Logout</span></a></li>
+            <li className='px-6'><Link to="/signup"><span className='text-yellow-400'>Sign in</span></Link></li>
+            <li className='px-4'><span className='text-yellow-400 cursor-pointer' onClick={handleLogOut}>Logout</span></li>
 
           </ul>
-          <span className='md:mr-40 mt-2 mr-10'><Link to='/cart'><FaShoppingCart className='text-2xl cursor-pointer'/></Link><i className='absolute top-1 text-xl font-semibold right-[9.5%]'>{productCart.length }</i></span>
+          <span className='md:mr-40 mt-2 mr-10'><Link to='/cart'><FaShoppingCart className='text-2xl cursor-pointer' /></Link><i className='absolute top-1 text-xl font-semibold right-[9.5%]'>{productCart.length}</i></span>
 
           {openMenu ? <div className='flex'>
             <ul className='md:flex  text-[22px] font-bold absolute top-0 right-0 w-[34%] h-full bg-[#151515] text-white z-10'>
@@ -33,8 +46,8 @@ const Navbar = ({productCart}) => {
               <li className='px-6 relative left-10 top-52 py-8'><Link to="/about">About us</Link></li>
               <li className='px-6 relative left-10 top-52 py-8'><Link to='/products'>Products</Link></li>
               <li className='px-6 relative left-10 top-52 py-8'><Link to="/signup"><span >Sign in</span></Link></li>
-              <li className='px-6 relative left-10 top-52 py-8'><Link to="/"><span >Logout</span></Link></li>
-              <div className='absolute top-0 right-0 mx-8 my-4 text-2xl cursor-pointer ' onClick={()=>setOpenMenu(!openMenu)}><RxCross1 /></div>
+              <li className='px-6 relative left-10 top-52 py-8'> <span >Logout</span></li>
+              <div className='absolute top-0 right-0 mx-8 my-4 text-2xl cursor-pointer ' onClick={() => setOpenMenu(!openMenu)}><RxCross1 /></div>
             </ul>
 
 
