@@ -4,7 +4,7 @@ import axios from 'axios'
 
 
 
-const ProductCard = ({ addToCart }) => {
+const ProductCard = () => {
 
     const [productData, setProductData] = useState([]);
 
@@ -32,7 +32,7 @@ const ProductCard = ({ addToCart }) => {
                         <>
 
                             <div key={i}>
-                                <div className=' w-[84%]  border rounded-lg flex  md:flex-col flex-row  ml-11  mt-[30px] h-auto' >
+                                <div className=' cursor-pointer w-[84%]  border rounded-lg flex  md:flex-col flex-row  ml-11  mt-[30px] h-auto' >
                                     <img src={product.image} loading='lazy' className='md:w-[250px] w-[200px] h-[250px]  rounded-lg md:ml-[5rem] ml-[2rem]  mt-4' />
 
                                     <div className='my-4 mx-6 pl-[15px] text-xl'>
@@ -40,7 +40,7 @@ const ProductCard = ({ addToCart }) => {
                                         <p className='font-medium'>prize :{product.price}</p>
 
                                         <div>
-                                            <button className='w-[70%]  my-8 p-2 rounded-lg  text-xl font-semibold text-white bg-[#151515]' onClick={() => addToCart(product)} >Add To Cart</button>
+                                            <button className='w-[70%]  my-8 p-2 rounded-lg  text-xl font-semibold text-white bg-[#151515]' >Add To Cart</button>
                                         </div>
 
                     

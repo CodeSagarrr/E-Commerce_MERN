@@ -43,8 +43,9 @@ function App() {
 
   const addToCart = (productItem) => {
       setProducts([...products, productItem])
-      setProductCart([...productCart, {...productItem , quantity:1}]);
       toast.success('product added')
+      setProductCart([...productCart, {...productItem , quantity:1}]);
+      
   }
 
 
