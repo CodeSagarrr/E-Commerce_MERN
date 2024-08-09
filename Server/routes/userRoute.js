@@ -9,4 +9,7 @@ router.post('/login',handleLogin)
 router.get('/',handleLogOut)
 router.get('/gmail',genOtp)
 
+
+
+
 module.exports = router;

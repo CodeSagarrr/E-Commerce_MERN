@@ -11,7 +11,8 @@ async function handleData(req, res) {
         const user = new userModel({
             username,
             email,
-            password
+            password,
+            
         })
         await user.save()
         res.send({ msg: 'user sign up successfully' })
@@ -38,7 +39,7 @@ function handleLogOut(req, res) {
     const loggedInUser = req.cookies.jwtToken;
 
     if (loggedInUser) {
-        res.clearCookie('jwtToken').send({ msg: 'Thanks to logout' });
+        res.clearCookie('jwtToken').send({ msg: 'user are logout' });
     }
 
 }
@@ -81,5 +82,5 @@ module.exports = {
     handleData,
     handleLogin,
     handleLogOut,
-    genOtp
+    genOtp,
 }
