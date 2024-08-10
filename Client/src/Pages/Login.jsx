@@ -16,13 +16,14 @@ function Login() {
     e.preventDefault();
     try {
       const userRes = await axios.post('/user/login',userLogin)
-      toast.success(userRes.data.msg)
-      setUserLogin({username:'',password:'',})
-      redirect('/products')
-
-      
+      if(userRes.data.msg === 'user are login'){
+        toast.success(userRes.data.msg)
+        setUserLogin({username:'',password:'',})
+      } else {
+        toast.error(userRes.data.msg)
+      } 
     } catch (error) {
-      toast.error(error.response.data.msg)
+      toast.error(error.data.msg)
     }
   }
 

@@ -5,12 +5,11 @@ const validate = (schema) => async(req,res,next) =>{
     console.log(req.body);
     req.body = parseBody;
     next();
- } catch (err) {
-    const errMsg = err.errors[0].message
+ } catch(err) {
+   const errMsg =err.errors[0].message;
     res.json({msg:errMsg})
+   // console.error(err);
  }
-
-
 }
 
 module.exports = {

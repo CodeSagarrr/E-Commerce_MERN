@@ -1,18 +1,27 @@
 const userModel = require('../Models/userModel')
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
+const bcrypt = require('bcrypt')
 const crypto = require('crypto');
+// const cloudinary = require('cloudinary').v2;
 const s_key = '$Sagar1234';
+
+
+
+
+
 
 async function handleData(req, res) {
     const { username, email, password } = req.body;
     console.log(username, email, password)
+    salt = 10;
+    const hasPass = await bcrypt.hash(password, salt);
     try {
         const user = new userModel({
             username,
             email,
-            password,
-            
+            password: hasPass,
+
         })
         await user.save()
         res.send({ msg: 'user sign up successfully' })
@@ -25,12 +34,14 @@ async function handleData(req, res) {
 
 
 async function handleLogin(req, res) {
-    const { username, password } = req.body;
+    const { password, username } = req.body;
     console.log(username, password);
     const user = await userModel.findOne({ username });
-    const token = jwt.sign({ username: username, password: user.password }, s_key)
+    if (!user) return res.json({ msg: 'user not found' })
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) return res.json({ msg: 'password incorrect' })
+    const token = jwt.sign({ password: password, username: username }, s_key)
     res.cookie('jwtToken', token)
-    if (!user) return res.json({ msg: 'user are not found' })
     res.send({ msg: 'user are login' })
 }
 

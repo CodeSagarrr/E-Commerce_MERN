@@ -6,6 +6,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/userData')
 .then(()=>console.log('connected to db'))
 .catch(err=>console.log(err));
 const path = require('path');
+const cloudinary = require('cloudinary').v2;
 
 
 
@@ -25,6 +26,7 @@ app.use(express.urlencoded({extended:false}));
 app.use(cookieParser())
 app.use(bodyParser.json());
 
+// setting with ejs
 app.set('view engine', 'ejs')
 app.set('views',path.resolve('./views'));
 
@@ -33,19 +35,32 @@ app.use('/user/signup',validate(validateUser), userRouter)
 app.use('/user/',userRouter)
 app.use('/user/logout',userRouter)
 app.use('/user/', userRouter)
-
 app.use('/user',checkUSerToken,(req,res)=>{
    res.send({user:req.user})
 })
-
 // ejs for configure
 app.get('/',(req,res)=>{
    res.render('index')
 })
 
-app.post('/upload', upload.single('fileImage'), (req, res) => {
-   console.log(req.body)
-  console.log(req.file);
+//cloudinary server
+cloudinary.config({
+   cloud_name:'dgsmntpfe',
+   api_key: '975586279947331',
+   api_secret: '9pL-HEjhlNPdlxpFd5ybNjjgV3g'
+});
+app.post('/upload', upload.single('fileImage'), async(req, res) => {
+   
+   const file = req.file.path;
+   console.log(file);
+
+   try {
+      const cloudImage = await cloudinary.uploader.upload(file,{resource_type:'auto'});
+      console.log(cloudImage.url);
+   } catch (error) {
+      console.error(error);
+   }
+
 
   return res.redirect('/')
 });
@@ -54,3 +69,6 @@ app.post('/upload', upload.single('fileImage'), (req, res) => {
 
 port = process.env.PORT || 8000
 app.listen(port,()=>console.log(`Start server ${port}`))
+
+
+//9pL-HEjhlNPdlxpFd5ybNjjgV3g api of cloudinary server
