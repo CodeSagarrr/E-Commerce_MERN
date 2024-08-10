@@ -10,6 +10,9 @@ import { useEffect, useState } from 'react'
 import Login from './Pages/Login'
 import CartProduct from './Pages/CartProduct'
 import ProductDetails from './Pages/ProductDetails'
+import EmailVerify from './Components/EmailVerify'
+import OtpVerify from './Components/OtpVerify'
+import ResetPass from './Components/ResetPass'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
@@ -64,6 +67,9 @@ function App() {
             <Route path='/signup' element={<><SignUp /></>} />
             <Route path='/login' element={<><Login /></>} />
             <Route path='/cart' element={<><CartProduct productCart={productCart} /></>} />
+            <Route path='/emailverify' element={<><EmailVerify/></>} />
+            <Route path='/emailverify/otpverify' element={<>< OtpVerify/></>} />
+            <Route path='/emailverify/otpverify/resetpassword' element={<><ResetPass/></>} />
           </Routes>
       </Router>
 

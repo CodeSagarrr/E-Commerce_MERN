@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import '../App.css'
 import image from '../Data/BannerData'
 import { FaChevronCircleLeft ,  FaChevronCircleRight} from "react-icons/fa";
 const Banner = () => {
@@ -22,8 +23,8 @@ const Banner = () => {
     <>
      {
         image.map((item,index) =>(
-            <div key={index} className={banner === index ? 'block':'hidden'} >
-                <div className='md:w-[80%] m-auto mt-10 rounded-lg h-[80vh] bg-cover bg-center w-[90%] ' style={{backgroundImage:`url(${item.img})`}} ></div>
+            <div key={index} className={ `${banner === index ? 'block':'hidden'}`} >
+                <div className='md:w-[80%] m-auto mt-10 rounded-lg h-[80vh] bg-cover bg-center w-[90%]' style={{backgroundImage:`url(${item.img})`}} ></div>
             </div>
 
         ))
@@ -37,3 +38,4 @@ const Banner = () => {
 }
 
 export default Banner
+
