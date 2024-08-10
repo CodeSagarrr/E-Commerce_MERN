@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt')
 const crypto = require('crypto');
-// const cloudinary = require('cloudinary').v2;
 const s_key = '$Sagar1234';
 
 
@@ -37,7 +36,7 @@ async function handleLogin(req, res) {
     const { password, username } = req.body;
     console.log(username, password);
     const user = await userModel.findOne({ username });
-    if (!user) return res.json({ msg: 'user not found' })
+    if (!user) return res.json({ msg: 'username not found' })
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) return res.json({ msg: 'password incorrect' })
     const token = jwt.sign({ password: password, username: username }, s_key)

@@ -16,15 +16,14 @@ const SignUp = () => {
     e.preventDefault();
     try {
       const res = await axios.post('/user/signup', userData)
-      toast.success(res.data.msg)
-      setUserData({ username: '', email: '', password: '', })
+      if (res.data.msg === 'user sign up successfully') {
+        toast.success(res.data.msg)
+        setUserData({ username: '', email: '', password: '', })
+      }else {
+        toast.error(res.data.msg)
+      }
 
-      setTimeout(() => {
-        if (res.data.msg) {
-          window.location.href = '/login'
-        } else{
-          toast.error('Sign up failed. Please try again.')
-        }},1000)
+
     } catch (error) {
       console.log(error)
     }
@@ -46,7 +45,7 @@ const SignUp = () => {
             <input className='w-[90%] h-[10%]  rounded-md p-2  outline-none' type='password' placeholder='Password' name='password' onChange={handleChange} />
             <button className='w-[90%] h-[10%] rounded-md mt-10 bg-[#0f0f0f] text-white text20old outline-none' onClick={handleSign}>Sign Up</button>
           </form>
-          <ToastContainer/>
+          <ToastContainer />
           <div className=' flex w-full my-4 md:ml-32 ml-20'>
             <p className='text-white font-bold md:text-xl text-[18px]'>Already have an account ?</p> <a className='text-white font-bold text-xl ml-2' href='/login'>Login</a>
           </div>
