@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt')
 const crypto = require('crypto');
+const { error } = require('console');
 const s_key = '$Sagar1234';
 
 
@@ -86,6 +87,49 @@ const genOtp = (req, res) => {
 
 
 
+const handleEmailVer = async (req, res) => {
+    const { email } = req.body;
+    const userEmailVerify = await userModel.findOne({ email });
+    if (!userEmailVerify) {
+        return res.json({ msg: 'email not found' })
+    } else {
+        const OTP = crypto.randomInt(4, 100000);
+        const sentOtp = String(OTP).padStart(6, '5');
+
+        const token = jwt.sign({ email: email, OTP: OTP }, s_key)
+
+        const emailTransporter = nodemailer.createTransport({
+            service: 'gmail',
+            secure: true,
+            port: 587,
+            tls: { rejectUnauthorized: false },
+            auth: {
+                user: 'sv472921@gmail.com',
+                pass: 'sdan jocr bfeu okle'
+            }
+        })
+        const mailOption = ({
+            from: 'sv472921@gmail.com',
+            to: email,
+            subject: 'OTP for Email Verification',
+            text: `Your OTP is ${sentOtp}`
+        })
+        emailTransporter.sendMail(mailOption, (error, emailRes) => {
+            if (error) {
+                console.log(error)
+                return res.status(500).json({ msg: 'Error sending email' })
+            }
+            console.log('Email sent: ', emailRes.response)
+        })
+        res.cookie('emailToken', token, { httpOnly: true, secure: true })
+            .status(200)
+            .json({ msg: 'OTP sent successfully' });
+
+
+    }
+};
+
+
 
 
 module.exports = {
@@ -93,4 +137,5 @@ module.exports = {
     handleLogin,
     handleLogOut,
     genOtp,
+    handleEmailVer,
 }
