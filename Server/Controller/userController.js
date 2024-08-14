@@ -130,18 +130,14 @@ const handleEmailVer = async (req, res) => {
 
 const handleUserOtp = async(req,res)=>{
     const{otp}=req.body;
-    console.log(otp)
     const userToken = req.cookies.emailToken;
-    console.log(userToken)
     if(!userToken){
         res.status(400).json({msg:'inavlid email token'})
     }else{
         const user = jwt.verify(userToken,s_key);
-        console.log(user)
         const userOtp = user.OTP;
-        console.log(userOtp)
         if(userOtp == otp){
-            res.clearCookie('emailToken').status(200).json({msg:'user otp are verified'});
+            res.clearCookie('emailToken').status(200).json({msg:' OTP are verified'});
         }else{
             res.status(401).json({msg:'invalid user otp'})
         }

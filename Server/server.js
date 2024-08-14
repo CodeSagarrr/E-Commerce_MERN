@@ -6,6 +6,7 @@ mongoose.connect('mongodb://127.0.0.1:27017/userData')
    .catch(err => console.log(err));
 const path = require('path');
 const cloudinary = require('cloudinary').v2;
+const bodyParser = require('body-parser');
 
 
 
@@ -23,6 +24,7 @@ const upload = require('./Multer/multer');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
+app.use(bodyParser.json())
 
 // setting with ejs
 app.set('view engine', 'ejs')
