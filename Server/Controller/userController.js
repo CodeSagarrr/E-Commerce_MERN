@@ -1,5 +1,5 @@
 const userModel = require('../Models/userModel')
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt')
 const crypto = require('crypto');
@@ -92,8 +92,8 @@ const handleEmailVer = async (req, res) => {
     if (!userEmailVerify) {
         return res.json({ msg: 'email not found' })
     } else {
-        const OTP = crypto.randomInt(4, 100000);
-        const sentOtp = String(OTP).padStart(6, '5');
+        const OTP = crypto.randomInt(4, 1000000);
+        const sentOtp = String(OTP).padStart(6);
 
         const token = jwt.sign({ email , OTP}, s_key)
 
@@ -128,32 +128,24 @@ const handleEmailVer = async (req, res) => {
     }
 };
 
-const handleOtpVer = async(req, res) => {
-    // const {otp} = req.body;
-    // console.log(req.body);
-    // const checkToken = req.cookies.emailToken;
-    // if(!checkToken){
-    //     res.status(401).json({msg:'invalid user token'});
-    // }else{
-    //     const verifyToken = jwt.verify(checkToken,s_key);
-    //     console.log(verifyToken.OTP);
-    //         if(verifyToken.OTP !== otp){
-    //             // res.clearCookie('emailToken').send({msg:'email verified successfully'}); 
-    //             // console.log(otp)
-    //             res.status(401).json({msg:'invalid OTP'})
-    //             console.log(otp)
-    //         }else{
-    //             res.clearCookie('emailToken').send({msg:'email verified successfully'}); 
-    //             console.log(otp)
-    //         }
-        
-    // }
-    const { otp } = req.body;
-    console.log('Received OTP:', otp); // Log the received OTP
-    if (!otp) {
-        return res.status(400).json({ msg: 'OTP not provided or undefined' });
+const handleUserOtp = async(req,res)=>{
+    const{otp}=req.body;
+    console.log(otp)
+    const userToken = req.cookies.emailToken;
+    console.log(userToken)
+    if(!userToken){
+        res.status(400).json({msg:'inavlid email token'})
+    }else{
+        const user = jwt.verify(userToken,s_key);
+        console.log(user)
+        const userOtp = user.OTP;
+        console.log(userOtp)
+        if(userOtp == otp){
+            res.clearCookie('emailToken').status(200).json({msg:'user otp are verified'});
+        }else{
+            res.status(401).json({msg:'invalid user otp'})
+        }
     }
-    
 };
 
 
@@ -164,5 +156,5 @@ module.exports = {
     handleLogOut,
     genOtp,
     handleEmailVer,
-    handleOtpVer,
+    handleUserOtp
 }

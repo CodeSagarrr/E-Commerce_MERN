@@ -60,7 +60,7 @@ function App() {
           <Navbar productCart={productCart} />
           <ToastContainer />
           <Routes>
-            <Route path='/' element={<><Home addToCart={addToCart} /></>} />
+            <Route path='/' element={<><Home  /></>} />
             <Route path='/about' element={<><About /></>} />
             <Route path='/products' element={<><Products addToCart={addToCart} /></>} />
             <Route path='/products/:id' element={<><ProductDetails addToCart={addToCart} /></>} />

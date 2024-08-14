@@ -7,7 +7,7 @@ import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 
 
-const Home = ({addToCart}) => {
+const Home = () => {
  const redirect = useNavigate()
  const  [user , setUser] = useState('');
 
@@ -36,7 +36,7 @@ const Home = ({addToCart}) => {
   
      <Banner/>
      <ProductAbout/>
-     <ProductCard addToCart={addToCart}/>
+     <ProductCard />
      <Footer/>
     </div>
   )
