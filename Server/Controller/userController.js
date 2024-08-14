@@ -3,7 +3,6 @@ const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
 const bcrypt = require('bcrypt')
 const crypto = require('crypto');
-const { error } = require('console');
 const s_key = '$Sagar1234';
 
 
@@ -96,11 +95,11 @@ const handleEmailVer = async (req, res) => {
         const OTP = crypto.randomInt(4, 100000);
         const sentOtp = String(OTP).padStart(6, '5');
 
-        const token = jwt.sign({ email: email, OTP: OTP }, s_key)
+        const token = jwt.sign({ email , OTP}, s_key)
 
         const emailTransporter = nodemailer.createTransport({
             service: 'gmail',
-            secure: true,
+            secure: false,
             port: 587,
             tls: { rejectUnauthorized: false },
             auth: {
@@ -129,6 +128,33 @@ const handleEmailVer = async (req, res) => {
     }
 };
 
+const handleOtpVer = async(req, res) => {
+    // const {otp} = req.body;
+    // console.log(req.body);
+    // const checkToken = req.cookies.emailToken;
+    // if(!checkToken){
+    //     res.status(401).json({msg:'invalid user token'});
+    // }else{
+    //     const verifyToken = jwt.verify(checkToken,s_key);
+    //     console.log(verifyToken.OTP);
+    //         if(verifyToken.OTP !== otp){
+    //             // res.clearCookie('emailToken').send({msg:'email verified successfully'}); 
+    //             // console.log(otp)
+    //             res.status(401).json({msg:'invalid OTP'})
+    //             console.log(otp)
+    //         }else{
+    //             res.clearCookie('emailToken').send({msg:'email verified successfully'}); 
+    //             console.log(otp)
+    //         }
+        
+    // }
+    const { otp } = req.body;
+    console.log('Received OTP:', otp); // Log the received OTP
+    if (!otp) {
+        return res.status(400).json({ msg: 'OTP not provided or undefined' });
+    }
+    
+};
 
 
 
@@ -138,4 +164,5 @@ module.exports = {
     handleLogOut,
     genOtp,
     handleEmailVer,
+    handleOtpVer,
 }

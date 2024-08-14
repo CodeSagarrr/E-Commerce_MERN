@@ -12,10 +12,10 @@ const cloudinary = require('cloudinary').v2;
 
 
 // routes
-const userRouter = require('./routes/userRoute')
 const validateUser = require('./validation/userAuth')
 const { validate } = require('./middleware/userAuthMW')
 const { checkUSerToken } = require('./middleware/checkUserToken');
+const {handleData,handleLogin,handleLogOut,genOtp ,handleEmailVer,handleOtpVer} = require('./Controller/userController')
 const cookieParser = require('cookie-parser');
 const upload = require('./Multer/multer');
 
@@ -31,12 +31,12 @@ app.set('view engine', 'ejs')
 app.set('views', path.resolve('./views'));
 
 
-app.use('/user/signup', validate(validateUser), userRouter);
-app.use('/user/', userRouter);
-app.use('/user/logout', userRouter);
-app.use('/user/', userRouter);
-app.use('/user/', userRouter);
-
+app.route('/user/signup').post(validate(validateUser),handleData)
+app.route('/user/login').post(handleLogin)
+app.route('/user/logout').get(handleLogOut)
+app.route('/user/gmail').get(genOtp);
+app.route('/user/emailVerify').post(handleEmailVer);
+app.route('/user/otpVerify').post(handleOtpVer);
 app.use('/user', checkUSerToken, (req, res) => {
    res.send({ user: req.user })
 })

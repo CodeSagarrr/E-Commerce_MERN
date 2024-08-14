@@ -7,7 +7,7 @@ function EmailVerify() {
     const [emailVerify , setEmailVerify] =useState({email:''})
 
     const handleChange = (e) => {
-        setEmailVerify({...emailVerify,[e.target.name]: e.target.value});;
+        setEmailVerify({...emailVerify,[e.target.name]: e.target.value});
     };
 
     const handleSubmitEmail = async(e) =>{

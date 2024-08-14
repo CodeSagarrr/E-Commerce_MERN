@@ -46,7 +46,7 @@ function Products({ addToCart }) {
                       <p className='font-medium'>prize :{product.price}</p>
 
                       <div>
-                        <button className='w-[70%]  my-8 p-2 rounded-lg  text-xl font-semibold text-white bg-[#151515]' onClick={() => addToCart(product)}>Add To Cart</button>
+                        <button className='w-[70%]  my-8 p-2 rounded-lg  text-xl font-semibold text-white bg-[#151515]' >Add To Cart</button>
                       </div>
                     </div>
                   </div></Link>
