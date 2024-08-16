@@ -15,11 +15,17 @@ function OtpVerify() {
     e.preventDefault();
     try {
      const otpRes = await axios.post('/user/otpverify',userOtp);
+     console.log(otpRes.data.msg)
+      if(otpRes.data.msg.trim() === 'OTP are verified'){
         toast.success(otpRes.data.msg)
         setUserOtp({otp:''})
         setTimeout(()=>{
           window.location.href = '/emailverify/otpverify/resetpassword'
-        }, 2000)
+        }, 3000)
+      } else {
+        toast.error(otpRes.data.msg)
+      }
+  
     } catch (error) {
       if(axios.isAxiosError(error)) {
         toast.error('Error occured',error.message);
