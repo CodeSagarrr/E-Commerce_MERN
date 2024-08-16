@@ -137,13 +137,32 @@ const handleUserOtp = async(req,res)=>{
         const user = jwt.verify(userToken,s_key);
         const userOtp = user.OTP;
         if(userOtp == otp){
-            res.clearCookie('emailToken').status(200).json({msg:' OTP are verified'});
+            res.status(200).json({msg:' OTP are verified'});
         }else{
             res.status(401).json({msg:'invalid user otp'})
         }
     }
 };
 
+const handleResetPassword =async(req,res) =>{
+       const {password} = req.body;
+       const hashPass =await bcrypt.hash(password,10)
+       const userToken = req.cookies.emailToken;
+       if(!userToken){
+        res.status(400).json({msg:'inavlid email token'})
+       }else{
+        const user = jwt.verify(userToken,s_key);
+        const userEmail = user.email;
+        console.log(userEmail);
+        if(!userEmail) return res.json({msg:'user email not verify'})
+        const updateUser = await userModel.findOne({email: userEmail});
+        console.log(updateUser)
+        if(!updateUser) return res.json({msg:'user not found'})
+        updateUser.password=hashPass;
+        await updateUser.save();
+        res.clearCookie('emailToken').status(200).json({msg:'password reset successfully'});
+       }
+}
 
 
 module.exports = {
@@ -152,5 +171,6 @@ module.exports = {
     handleLogOut,
     genOtp,
     handleEmailVer,
-    handleUserOtp
+    handleUserOtp,
+    handleResetPassword
 }

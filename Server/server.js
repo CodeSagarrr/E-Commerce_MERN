@@ -15,7 +15,7 @@ const bodyParser = require('body-parser');
 const validateUser = require('./validation/userAuth')
 const { validate } = require('./middleware/userAuthMW')
 const { checkUSerToken } = require('./middleware/checkUserToken');
-const {handleData,handleLogin,handleLogOut,genOtp ,handleEmailVer,handleUserOtp} = require('./Controller/userController')
+const {handleData,handleLogin,handleLogOut,genOtp ,handleEmailVer,handleUserOtp,handleResetPassword} = require('./Controller/userController')
 const cookieParser = require('cookie-parser');
 const upload = require('./Multer/multer');
 
@@ -30,12 +30,14 @@ app.use(bodyParser.json())
 app.set('view engine', 'ejs')
 app.set('views', path.resolve('./views'));
 
-app.route('/user/otpverify').post(handleUserOtp)
+
 app.route('/user/signup').post(validate(validateUser),handleData)
 app.route('/user/login').post(handleLogin)
 app.route('/user/logout').get(handleLogOut)
 app.route('/user/gmail').get(genOtp);
 app.route('/user/emailVerify').post(handleEmailVer);
+app.route('/user/otpverify').post(handleUserOtp);
+app.route('/user/resetpassword').post(handleResetPassword);
 
 app.use('/user', checkUSerToken, (req, res) => {
    res.send({ user: req.user })

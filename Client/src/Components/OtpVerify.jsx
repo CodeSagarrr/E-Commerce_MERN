@@ -14,13 +14,12 @@ function OtpVerify() {
   const handleOtpBtn = async(e)=>{
     e.preventDefault();
     try {
-     const res = await axios.post('/user/otpverify',userOtp);
-      toast.success(res.data.msg)
-      setUserOtp({otp:''})
-      setTimeout(()=>{
-        window.location.href = '/emailverify/otpverify/resetpassword'
-      }, 2000)
-  
+     const otpRes = await axios.post('/user/otpverify',userOtp);
+        toast.success(otpRes.data.msg)
+        setUserOtp({otp:''})
+        setTimeout(()=>{
+          window.location.href = '/emailverify/otpverify/resetpassword'
+        }, 2000)
     } catch (error) {
       if(axios.isAxiosError(error)) {
         toast.error('Error occured',error.message);
