@@ -1,7 +1,7 @@
 const userModel = require('../Models/userModel')
 const jwt = require('jsonwebtoken')
 const nodemailer = require('nodemailer');
-const bcrypt = require('bcrypt')
+const bcrypt = require('bcryptjs')
 const crypto = require('crypto');
 const s_key = '$Sagar1234';
 
