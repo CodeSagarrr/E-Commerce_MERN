@@ -45,7 +45,7 @@ const Navbar = ({ productCart }) => {
               <li className='px-6 relative left-10 top-52 py-8'><Link to="/">Home</Link></li>
               <li className='px-6 relative left-10 top-52 py-8'><Link to="/about">About us</Link></li>
               <li className='px-6 relative left-10 top-52 py-8'><Link to='/products'>Products</Link></li>
-              <li className='px-6 relative left-10 top-52 py-8'><Link to="/signup"><span >Sign in</span></Link></li>
+              <li className='px-6 relative left-10 top-52 py-8'><Link to="/login"><span >Sign in</span></Link></li>
               <li className='px-6 relative left-10 top-52 py-8'> <span >Logout</span></li>
               <div className='absolute top-0 right-0 mx-8 my-4 text-2xl cursor-pointer ' onClick={() => setOpenMenu(!openMenu)}><RxCross1 /></div>
             </ul>
