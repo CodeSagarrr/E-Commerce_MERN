@@ -4,7 +4,7 @@ const path = require('path');
 const cloudinary = require('cloudinary').v2;
 const bodyParser = require('body-parser');
 const mongoConnect = require('./db/MongoDB')
-
+const cors = require('cors')
 
 
 // routes
@@ -23,6 +23,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(bodyParser.json())
+const corsOrigin = {
+    origin: 'https://e-commerce-app-tqd7.onrender.com' || ' http://localhost:5173',
+    credentials: true,
+  };
+app.use(cors(corsOrigin));
 mongoConnect(process.env.MONGOCONNECTION || 'mongodb://127.0.0.1/userData')
 
 // setting with ejs
