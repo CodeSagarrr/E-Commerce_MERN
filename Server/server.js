@@ -1,30 +1,29 @@
 const express = require('express')
 const app = express();
-const mongoose = require('mongoose');
-mongoose.connect('mongodb://127.0.0.1:27017/userData')
-   .then(() => console.log('connected to db'))
-   .catch(err => console.log(err));
 const path = require('path');
 const cloudinary = require('cloudinary').v2;
 const bodyParser = require('body-parser');
-
+const mongoConnect = require('./db/MongoDB')
 
 
 
 // routes
 const validateUser = require('./validation/userAuth')
 const { validate } = require('./middleware/userAuthMW')
-const { checkUSerToken } = require('./middleware/checkUserToken');
+const { checkUserToken } = require('./middleware/checkUserToken.js');
 const {handleData,handleLogin,handleLogOut,genOtp ,handleEmailVer,handleUserOtp,handleResetPassword} = require('./Controller/userController')
 const cookieParser = require('cookie-parser');
 const upload = require('./Multer/multer');
+const dotenv = require('dotenv');
 
 
 
+ dotenv.config()
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(bodyParser.json())
+mongoConnect(process.env.MONGOCONNECTION || 'mongodb://127.0.0.1/userData')
 
 // setting with ejs
 app.set('view engine', 'ejs')
@@ -39,19 +38,17 @@ app.route('/user/emailVerify').post(handleEmailVer);
 app.route('/user/otpverify').post(handleUserOtp);
 app.route('/user/resetpassword').post(handleResetPassword);
 
-app.use('/user', checkUSerToken, (req, res) => {
-   res.send({ user: req.user })
+app.get('/user', checkUserToken, (req, res) => {
+   res.json({ user: req.user , message: "Access granted to chat data" })
 })
-// ejs for configure
-app.get('/', (req, res) => {
-   res.render('index')
-})
+
+
 
 //cloudinary server
 cloudinary.config({
-   cloud_name: 'dgsmntpfe',
-   api_key: '975586279947331',
-   api_secret: '9pL-HEjhlNPdlxpFd5ybNjjgV3g'
+   cloud_name: process.env.cloudinary_cloud_name,
+   api_key: process.env.cloudinary_api_key,
+   api_secret:process.env.cloudinary_api_secret
 });
 app.post('/upload', upload.single('fileImage'), async (req, res) => {
 

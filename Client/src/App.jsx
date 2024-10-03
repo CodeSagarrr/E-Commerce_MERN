@@ -13,23 +13,13 @@ import ProductDetails from './Pages/ProductDetails'
 import EmailVerify from './Components/EmailVerify'
 import OtpVerify from './Components/OtpVerify'
 import ResetPass from './Components/ResetPass'
-import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 
 
 
 function App() {
-  const [serverData, setServerData] = useState([])
 
-
-  useEffect(() => {
-    axios.get('/user')
-      .then((res) => {
-        setServerData(res.data)
-      })
-      .catch(err => console.log(err))
-  })
 
   const [productCart, setProductCart] = useState([]);
   const [products , setProducts] = useState([]);
@@ -60,16 +50,16 @@ function App() {
           <Navbar productCart={productCart} />
           <ToastContainer />
           <Routes>
-            <Route path='/' element={<><Home  /></>} />
-            <Route path='/about' element={<><About /></>} />
-            <Route path='/products' element={<><Products addToCart={addToCart} /></>} />
-            <Route path='/products/:id' element={<><ProductDetails addToCart={addToCart} /></>} />
-            <Route path='/signup' element={<><SignUp /></>} />
-            <Route path='/login' element={<><Login /></>} />
-            <Route path='/cart' element={<><CartProduct productCart={productCart} /></>} />
-            <Route path='/emailverify' element={<><EmailVerify/></>} />
-            <Route path='/emailverify/otpverify' element={<>< OtpVerify/></>} />
-            <Route path='/emailverify/otpverify/resetpassword' element={<><ResetPass/></>} />
+            <Route exact path='/' element={<Home  />} />
+            <Route exact path='/about' element={<><About /></>} />
+            <Route exact path='/products' element={<><Products addToCart={addToCart} /></>} />
+            <Route  exact path='/products/:id' element={<><ProductDetails addToCart={addToCart} /></>} />
+            <Route exact path='/signup' element={<><SignUp /></>} />
+            <Route exact path='/login' element={<><Login /></>} />
+            <Route exact path='/cart' element={<><CartProduct productCart={productCart} /></>} />
+            <Route exact path='/emailverify' element={<><EmailVerify/></>} />
+            <Route exact path='/emailverify/otpverify' element={<>< OtpVerify/></>} />
+            <Route exact path='/emailverify/otpverify/resetpassword' element={<><ResetPass/></>} />
           </Routes>
       </Router>
 
