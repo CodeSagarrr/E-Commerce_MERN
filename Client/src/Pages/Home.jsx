@@ -26,7 +26,7 @@ const Home = () => {
     }
   
 getData()  
-  },[])
+  })
 
   return (
     <div>
