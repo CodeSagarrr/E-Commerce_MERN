@@ -45,7 +45,8 @@ function Login() {
           </form>
           <ToastContainer />
           <div className=' flex w-full  md:ml-36 ml-24'>
-            <p className='text-white font-bold md:text-xl text-[18px]'>Create an account !</p> <a className='text-white font-bold text-xl ml-2' href='/signup'>Sign Up</a>
+            <p className='text-white font-bold md:text-xl text-[18px]'>Create an account !</p> 
+            <Link to='/signup'><p className='text-white font-bold text-xl ml-2'>Sign Up</p></Link>
           </div>
         </div>
       </div>

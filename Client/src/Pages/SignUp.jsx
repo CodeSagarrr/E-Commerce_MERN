@@ -2,6 +2,7 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link} from 'react-router-dom'
 const SignUp = () => {
 
   const [userData, setUserData] = useState({ username: '', email: '', password: '', })
@@ -47,7 +48,9 @@ const SignUp = () => {
           </form>
           <ToastContainer />
           <div className=' flex w-full my-4 md:ml-32 ml-20'>
-            <p className='text-white font-bold md:text-xl text-[18px]'>Already have an account ?</p> <a className='text-white font-bold text-xl ml-2' href='/login'>Login</a>
+           
+            <p className='text-white font-bold md:text-xl text-[18px]'>Already have an account ?</p>
+            <Link to="/login"> <p className='text-white font-bold text-xl ml-2 cursor-pointer'>Login</p></Link>
           </div>
         </div>
       </div>

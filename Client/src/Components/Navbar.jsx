@@ -17,7 +17,7 @@ const Navbar = ({ productCart }) => {
       redirect('/login')
     } catch (error) {
       if (axios.isAxiosError(error)) {
-        alert('error occured');
+       console.log(error)
       }
     }
   }
