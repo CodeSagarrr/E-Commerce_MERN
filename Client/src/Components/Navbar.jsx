@@ -34,7 +34,7 @@ const Navbar = ({ productCart }) => {
             <li className='px-6'><Link to="/">Home</Link></li>
             <li className='px-6'><Link to="/about">About us</Link></li>
             <li className='px-6'><Link to='/products'>Products</Link></li>
-            <li className='px-6'><Link to="/signup"><span className='text-yellow-400'>Sign in</span></Link></li>
+            <li className='px-6'><Link to="/login"><span className='text-yellow-400'>Sign in</span></Link></li>
             <li className='px-4'><span className='text-yellow-400 cursor-pointer' onClick={handleLogOut}>Logout</span></li>
 
           </ul>
