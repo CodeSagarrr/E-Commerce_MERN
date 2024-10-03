@@ -13,10 +13,10 @@ const Home = () => {
   useEffect(()=>{
     const getData = async() =>{
       try {
-        const response = await axios.get('/user/home')
+        const response = await axios.get('/user')
         setUser(response.data);
         if(response.ok){
-         window.location.href='/'
+         window.location.href='/product'
         }
      } catch (error) {
        if(axios.isAxiosError(error)){
