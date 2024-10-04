@@ -23,7 +23,7 @@ const ProductCard = () => {
 
     return (
         <>
-            <h1 className='text-5xl font-bold text-left sm:mx-[7rem] mx-[9rem] my-4 '>Products</h1>
+            <h1 className='text-5xl font-bold text-left sm:mx-[7rem] mx-[7rem] my-4 '>Products</h1>
 
             <div className='sm:grid md:grid-cols-3 w-full px-4  '>
 
@@ -56,7 +56,7 @@ const ProductCard = () => {
                 }
 
             </div>
-            <button className='mt-6 sm:ml-[33rem] font-semibold bg-[#151515] text-white p-2 rounded-lg sm:w-[18%] w-[33%] ml-[10rem]'><a href="/products">More</a></button>
+            <button className='mt-6 sm:ml-[33rem] font-semibold bg-[#151515] text-white p-2 rounded-lg sm:w-[18%] w-[33%] ml-[7rem]'><a href="/products">More</a></button>
 
 
         </>

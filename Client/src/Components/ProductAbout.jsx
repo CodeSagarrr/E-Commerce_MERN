@@ -21,7 +21,7 @@ const ProductAbout = () => {
                 <br/> aliquid totam repellat molestias delectus? Tenetur excepturi inventore in mollitia cum unde quisquam illo libero alias numquam. Alias earum provident cupiditate eaque, officia quaerat labore omnis? Eaque placeat molestias fugiat praesentium voluptas, </p>
             </div>
         </div>
-        <h1 className='my-6 text-4xl font-bold ml-40'>  Bags </h1>
+        <h1 className='my-6 text-4xl font-bold ml-32'>  Bags </h1>
         <div className='sm:flex w-full  p-2 mt-6  '>
             <div className=' basis-[50%]  sm:ml-6 ml-6 text-[18px] font-medium'>
                 <p className=' max-w-[90%] '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed odit commodi recusandae quisquam officia maiores amet suscipit corrupti quibusdam iusto illo, libero architecto 
