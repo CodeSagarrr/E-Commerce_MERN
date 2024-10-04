@@ -34,7 +34,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className='sm:ml-20 ml-8 sm:mt-[5rem] mt-[2rem]'>
+            <div className='sm:ml-20 ml-4 sm:mt-[5rem] mt-[2rem]'>
               <h1 className='text-2xl font-bold'> Categories</h1>
               <div className='flex flex-col gap-4 mt-4'>
                 <p>Cloths</p>

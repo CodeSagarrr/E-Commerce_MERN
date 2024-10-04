@@ -24,12 +24,12 @@ const Banner = () => {
      {
         image.map((item,index) =>(
             <div key={index} className={ `${banner === index ? 'block':'hidden'}`} >
-                <div className='md:w-[80%] m-auto mt-10 rounded-lg h-[80vh] bg-cover bg-center w-[90%]' style={{backgroundImage:`url(${item.img})`}} ></div>
+                <div className='sm:w-[80%] m-auto mt-10 rounded-lg sm:h-[80vh] h-[50vh] bg-cover bg-center w-[90%]' style={{backgroundImage:`url(${item.img})`}} ></div>
             </div>
 
         ))
      }
-     <div className='flex justify-between  w-[76%] absolute top-[50%] left-[12%] '>
+     <div className='flex justify-between  w-[76%] absolute sm:top-[50%] top-[37%] left-[12%] '>
      <FaChevronCircleLeft onClick={prevBanner} className='text-4xl cursor-pointer'/>
      <FaChevronCircleRight onClick={nextBanner} className='text-4xl cursor-pointer' />
      </div>

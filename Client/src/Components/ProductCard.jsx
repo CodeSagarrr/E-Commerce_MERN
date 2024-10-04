@@ -32,8 +32,8 @@ const ProductCard = () => {
                         <>
 
                             <div key={i}>
-                                <div className=' cursor-pointer sm:w-[95%] w-[77%]  border rounded-lg flex  sm:flex-col flex-col  sm:ml-2.5  ml-12 mt-[30px] h-auto' >
-                                    <img src={product.image} loading='lazy' className='sm:w-[250px] w-[200px] h-[250px]  rounded-lg sm:ml-[4rem] ml-[4rem]  mt-4' />
+                                <div className=' cursor-pointer sm:w-[95%] w-[90%]  border rounded-lg flex  sm:flex-col flex-col  sm:ml-2.5  ml-4 mt-[30px] h-auto' >
+                                    <img src={product.image} loading='lazy' className='sm:w-[250px] w-[200px] h-[250px]  rounded-lg sm:ml-[4rem] ml-[3rem]  mt-4' />
 
                                     <div className='my-4 sm:mx-6 mx-10 pl-[15px] text-xl'>
                                         <h1 className='font-bold my-4'>{product.title}</h1>

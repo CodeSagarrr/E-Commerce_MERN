@@ -11,7 +11,7 @@ const ProductAbout = () => {
             <img src="https://png.pngtree.com/png-vector/20230407/ourmid/pngtree-green-transparent-sports-shoes-png-image_6687298.png"  />
             </div>
             
-            <div className=' basis-[50%] md:mt-4 mt-2  mr-2 text-[18px] font-medium sm:ml-6 ml-8 '>
+            <div className=' basis-[50%] md:mt-4 mt-2  text-[18px] font-medium sm:ml-6  '>
                 <p className='md:max-w-[94%] max-w-[100%]'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed odit commodi recusandae quisquam officia maiores amet suscipit corrupti quibusdam iusto illo, libero architecto? Cum id quaerat iure libero aliquam nulla a temporibus ab accusantium quasi? Incidunt illum,
                 <br/> praesentium autem magni iusto molestias nihil odio ut. Culpa sint at quidem pariatur doloribus reiciendis odio, quis dignissimos.
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis cum dolor iure nobis at u 
@@ -22,8 +22,8 @@ const ProductAbout = () => {
             </div>
         </div>
         <h1 className='my-6 text-4xl font-bold ml-40'>  Bags </h1>
-        <div className='sm:flex w-full  p-6 mt-6  '>
-            <div className=' basis-[50%]  sm:ml-6 ml-10 text-[18px] font-medium'>
+        <div className='sm:flex w-full  p-2 mt-6  '>
+            <div className=' basis-[50%]  sm:ml-6 ml-6 text-[18px] font-medium'>
                 <p className=' max-w-[90%] '>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed odit commodi recusandae quisquam officia maiores amet suscipit corrupti quibusdam iusto illo, libero architecto 
                 <br/> praesentium autem magni iusto molestias nihil odio ut. Culpa sint at quidem pariatur doloribus reiciendis odio, quis dignissimos.
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis cum dolor iure nobis at ut
