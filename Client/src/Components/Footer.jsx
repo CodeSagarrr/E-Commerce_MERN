@@ -8,10 +8,10 @@ const Footer = () => {
   return (
     <>
       <div>
-        <div className='flex p-4 bg-[#151515] w-full text-white mt-10 rounded-t-lg'>
-          <div className='basis-[40%] md:ml-20 ml-3  mt-16'>
+        <div className='flex sm:flex-row flex-col p-4 bg-[#151515] w-full text-white mt-10 rounded-t-lg'>
+          <div className='basis-[40%] sm:ml-20 ml-3  mt-16'>
             <span className='text-5xl'><FaComment /></span>
-            <p className='md:max-w-[60%] my-6 font-semibold max--w-[98%]'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, atque tenetur. Accusantium quibusdam totam amet eius corporis mollitia cumque excepturi
+            <p className='sm:max-w-[60%] my-6 font-semibold max-w-[98%]'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quasi, atque tenetur. Accusantium quibusdam totam amet eius corporis mollitia cumque excepturi
               <br /> suscipit voluptate fuga! Iusto consequatur nulla est itaque sint sunt.</p>
 
             <h1 className='text-2xl font-semibold'>Connect With Us</h1>
@@ -24,8 +24,8 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className='basis-[60%] flex md:ml-20 ml-8 '>
-            <div className='mx-6 mt-16'>
+          <div className=' flex justify-evenly sm:ml-20 '>
+            <div className='sm:mt-20 mt-8'>
               <h1 className='text-2xl font-bold'>Quick Links</h1>
               <ul className='flex flex-col gap-4 mt-4 '>
                 <li><a href="/">Home</a></li>
@@ -34,7 +34,7 @@ const Footer = () => {
               </ul>
             </div>
 
-            <div className='ml-20 mt-14'>
+            <div className='sm:ml-20 ml-8 sm:mt-[5rem] mt-[2rem]'>
               <h1 className='text-2xl font-bold'> Categories</h1>
               <div className='flex flex-col gap-4 mt-4'>
                 <p>Cloths</p>
@@ -45,7 +45,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div className='flex flex-col gap-4 md:mt-20 mt-[90%] md:ml-32  text-4xl '>
+            <div className='flex flex-col sm:mt-20 mt-8 sm:ml-20 ml-6  text-4xl gap-4'>
               <a href='https://www.facebook.com/' className='px-1'><FaFacebook /></a>
               <a href='https://www.instagram.com/' className='px-1'><FaInstagramSquare /></a>
               <a href='https://www.twitter.com/' className='px-1'><FaSquareXTwitter /></a>

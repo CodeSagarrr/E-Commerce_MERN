@@ -23,19 +23,19 @@ const ProductCard = () => {
 
     return (
         <>
-            <h1 className='text-5xl font-bold text-left mx-[7rem] my-4 '>Products</h1>
+            <h1 className='text-5xl font-bold text-left sm:mx-[7rem] mx-[9rem] my-4 '>Products</h1>
 
-            <div className='md:grid md:grid-cols-4 w-full px-4  '>
+            <div className='sm:grid md:grid-cols-3 w-full px-4  '>
 
                 {
                     productData.map((product, i) => (
                         <>
 
                             <div key={i}>
-                                <div className=' cursor-pointer w-[84%]  border rounded-lg flex  md:flex-col flex-row  ml-11  mt-[30px] h-auto' >
-                                    <img src={product.image} loading='lazy' className='md:w-[250px] w-[200px] h-[250px]  rounded-lg md:ml-[5rem] ml-[2rem]  mt-4' />
+                                <div className=' cursor-pointer sm:w-[95%] w-[77%]  border rounded-lg flex  sm:flex-col flex-col  sm:ml-2.5  ml-12 mt-[30px] h-auto' >
+                                    <img src={product.image} loading='lazy' className='sm:w-[250px] w-[200px] h-[250px]  rounded-lg sm:ml-[4rem] ml-[4rem]  mt-4' />
 
-                                    <div className='my-4 mx-6 pl-[15px] text-xl'>
+                                    <div className='my-4 sm:mx-6 mx-10 pl-[15px] text-xl'>
                                         <h1 className='font-bold my-4'>{product.title}</h1>
                                         <p className='font-medium'>prize :{product.price}</p>
 
@@ -55,12 +55,8 @@ const ProductCard = () => {
                     ))
                 }
 
-                <button className='mt-6 md:ml-[54rem] font-semibold bg-[#151515] text-white p-2 rounded-lg w-[30%] ml-[13rem]'><a href="/products">More</a></button>
-
-
-
             </div>
-
+            <button className='mt-6 sm:ml-[33rem] font-semibold bg-[#151515] text-white p-2 rounded-lg sm:w-[18%] w-[33%] ml-[10rem]'><a href="/products">More</a></button>
 
 
         </>
