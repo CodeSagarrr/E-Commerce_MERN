@@ -34,30 +34,32 @@ const deleteCart = (i) => {
 
       <div>
         <h1 className='text-3xl font-bold text-center my-10'>Cart Product</h1>
-        <div className=' w-full pl-10 pt-10'>
+        <div className=' w-full sm:pt-10 pt-0'>
           {
             cartData.map((product, i) => (
-              <div key={i} className='md:flex md:ml-[10rem] ml-0 md:gap-x-3   mb-16'>
-                <div className='mb-8 md:ml-0 ml-[14rem]'>
-                  <img src={product.image} className='w-20 h-20' />
+              <div key={i} className='sm:flex sm:ml-[10rem] ml-0 md:gap-x-3   mb-16'>
+                <div className='sm:mb-8 mb-2 sm:ml-0 ml-[8rem]'>
+                  <img src={product.image} className='w-[11rem] h-[13rem]' />
                 </div>
-                <div className='flex md:ml-2 ml-6 items-center '>
-                  <h1 className='md:text-2xl text-xl font-bold mx-6'>{product.title}</h1>
+                <div className='flex sm:flex-col flex-col sm:ml-2 ml-2 mt-6 items-center '>
+                  <h1 className='sm:text-2xl text-xl font-bold sm:mx-6 mx-2 my-2'>{product.title}</h1>
+                  <div className='flex flex-row my-4'>
                   <FaCircleMinus className='cursor-pointer text-xl'
                     onClick={() => newCartMinus(i)}
                   />
                   <p className='text-xl font-semibold mx-2'>{product.quantity}</p>
-                  <FaCirclePlus className='cursor-pointer text-xl' onClick={() => newCartPlus(i)} />
-                  <p className='text-xl font-bold mx-6'>Rs. {product.price * product.quantity}</p>
+                  <FaCirclePlus className='cursor-pointer text-xl' onClick={() => newCartPlus(i)} /></div>
+
+                  <p className='text-2xl font-bold mx-6'>Rs. {product.price * product.quantity}</p>
                 </div>
-                <div className='md:mt-10 mt-10  md:ml-0 ml-[14rem]' onClick={()=>deleteCart(i)}>
+                <div className='sm:mt-10 mt-6  sm:ml-0 ml-[9rem]' onClick={()=>deleteCart(i)}>
                   <button className='text-3xl ml-10 text-[#c93030]' ><MdDelete /></button>
                 </div>
               </div>
             ))
           }
         </div>
-        <div className='my-10 flex justify-end md:mr-[20rem] mr-[18rem] text-2xl font-bold'>
+        <div className='my-10 flex justify-end sm:mr-[20rem] mr-[8rem] text-2xl font-bold'>
           Total. {
             cartData.map((item) => item.price * item.quantity).reduce((total, value) => total + value, 0).toFixed(2)
           }

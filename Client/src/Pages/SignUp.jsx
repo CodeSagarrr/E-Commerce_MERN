@@ -35,9 +35,9 @@ const SignUp = () => {
   return (
     <>
       <div className='flex flex-wrap w-full justify-center items-center h-[90vh] bg-[#246b91]'>
-        <div className='md:w-[32%] w-[100%] mx-10 h-[65vh] border my-10 rounded-3xl '>
+        <div className='sm:w-[48%] w-[100%] sm:mx-10 mx-2 h-[65vh] border my-10 rounded-3xl '>
           <h1 className='text-4xl font-bold mt-8 text-center text-white'>Sign Up</h1>
-          <form className='flex flex-col justify-center h-[70%] w-[90%] mx-12 my-4 '>
+          <form className='flex flex-col justify-center h-[70%] sm:w-[90%] w-[100%] sm:mx-12 mx-4 sm:my-4 my-1 '>
             <label className='font-bold text-xl mt-5 mb-1 text-white'>Username</label>
             <input className='w-[90%] h-[10%]  rounded-md p-2 outline-none' type='text' placeholder='Name' name='username' onChange={handleChange} />
             <label className='font-bold text-xl mt-5 mb-1 text-white'>Email</label>
@@ -47,9 +47,9 @@ const SignUp = () => {
             <button className='w-[90%] h-[10%] rounded-md mt-10 bg-[#0f0f0f] text-white text20old outline-none' onClick={handleSign}>Sign Up</button>
           </form>
           <ToastContainer />
-          <div className=' flex w-full my-4 md:ml-32 ml-20'>
+          <div className=' flex w-[97%] my-4 sm:ml-24 ml-8'>
            
-            <p className='text-white font-bold md:text-xl text-[18px]'>Already have an account ?</p>
+            <p className='text-white font-bold sm:text-xl text-[18px]'>Already have an account ?</p>
             <Link to="/login"> <p className='text-white font-bold text-xl ml-2 cursor-pointer'>Login</p></Link>
           </div>
         </div>

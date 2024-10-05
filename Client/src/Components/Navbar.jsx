@@ -41,7 +41,7 @@ const Navbar = ({ productCart }) => {
           <span className='sm:mr-4 mt-2 mr-3'><Link to='/cart'><FaShoppingCart className='text-2xl cursor-pointer' /></Link><i className='absolute top-1 text-xl font-semibold sm:right-[2.5%] right-[6.5%]'>{productCart.length}</i></span>
 
           {openMenu ? <div className='flex'>
-            <ul className='md:flex  text-[22px] font-bold absolute top-0 right-0 w-[40%] h-full bg-[#151515] text-white z-10'>
+            <ul className='md:flex  text-[22px] font-bold absolute top-0 right-0 w-[50%] h-full bg-[#151515] text-white z-10'>
               <li className='pl-2 relative left-10 top-52 py-8'><Link to="/">Home</Link></li>
               <li className='pl-2 relative left-10 top-52 py-8'><Link to="/about">About us</Link></li>
               <li className='pl-2 relative left-10 top-52 py-8'><Link to='/products'>Products</Link></li>

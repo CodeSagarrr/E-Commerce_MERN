@@ -24,10 +24,10 @@ function ProductDetails({addToCart}) {
         <>
 
             <div className=' flex justify-center items-center'>
-                <div className=' md:w-[25%] w-[80%]  border rounded-lg flex flex-col  md:ml-11 ml-2 mt-[60px] h-auto' >
-                    <img src={product.image} loading='lazy' className='md:w-[250px] w-[200px] h-[250px]  rounded-lg md:ml-[6rem] ml-[7rem]  mt-4' />
+                <div className=' sm:w-[46%] w-[94%]  border rounded-lg flex sm:flex-col flex-col md:ml-11 ml-0 mt-[60px] h-auto' >
+                    <img src={product.image} loading='lazy' className='md:w-[250px] w-[200px] h-[250px]  rounded-lg md:ml-[8rem] ml-[6rem]  mt-4' />
 
-                    <div className='my-4 mx-6 pl-[15px] text-xl'>
+                    <div className='my-4 sm:mx-10 mx-4 pl-[15px] text-xl'>
                         <h1 className='font-bold my-4'>{product.title}</h1>
                         <p className='font-medium'>prize :{product.price}</p>
 
