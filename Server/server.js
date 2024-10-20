@@ -24,7 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(bodyParser.json())
 const corsOrigin = {
-    origin: 'https://e-commerce-app-tqd7.onrender.com' || ' http://localhost:5173',
+    origin: 'https://e-commercedeploy.netlify.app/' || ' http://localhost:5173',
     credentials: true,
   };
 app.use(cors(corsOrigin));
