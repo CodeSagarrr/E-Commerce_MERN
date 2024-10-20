@@ -8,7 +8,7 @@ dotenv.config()
 export default defineConfig({
   server:{
     proxy:{
-      '/user':process.env.SERVER_URL
+      '/user':'https://e-commerce-app-1qa6.onrender.com'
     },
   },
   plugins: [react()],
