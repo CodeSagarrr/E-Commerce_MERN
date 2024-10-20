@@ -23,11 +23,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser())
 app.use(bodyParser.json())
-const corsOrigin = {
-    origin: 'https://e-commercedeploy.netlify.app/' || ' http://localhost:5173',
-    credentials: true,
-  };
-app.use(cors(corsOrigin));
+app.use(cors());
 mongoConnect(process.env.MONGOCONNECTION || 'mongodb://127.0.0.1/userData')
 
 // setting with ejs
